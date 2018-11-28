@@ -13,7 +13,10 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+
 var currentTime = moment().format("MM/DD/YYYY - HH:mm");
+var currentMinute = (parseInt(moment().format("HH")) * 60) + parseInt(moment().format("mm"));
+
 $("#current-time").text(currentTime);
 
 $("#add-train-btn").on("click", function (event) {
@@ -55,7 +58,9 @@ database.ref().on("child_added", function (snapshot) {
     console.log("firstTrain: " + firstTrain);
 
     var firstTrainMinute = (parseInt((firstTrain.slice(0, 2))) * 60) + parseInt(firstTrain.slice(3, 5));
-    var currentMinute = (parseInt(moment().format("HH")) * 60) + parseInt(moment().format("mm"));
+
+    // var currentMinute = (currentTime.hour()*60) + currentTime.minute();
+    // var currentMinute = (parseInt(moment().format("HH")) * 60) + parseInt(moment().format("mm"));
 
     var elapsedTime = parseInt(currentMinute - firstTrainMinute);
     console.log("currentMinute: " + currentMinute);
@@ -63,13 +68,16 @@ database.ref().on("child_added", function (snapshot) {
     console.log("elapsedTime: " + elapsedTime);
 
     if (elapsedTime < 0) {
+        console.log("negative");
         var nextArrival = firstTrain;
-        var minutesAway = trainMinute - currentMinute;
+        console.log("negative: nextArrival: " + nextArrival);
+        var minutesAway = firstTrainMinute - currentMinute;
+        console.log("negative: minutesAway: " + minutesAway);
     }
     else {
         var nextArrivalMinutes = firstTrainMinute + ((Math.floor(elapsedTime / frequency)) * frequency) + frequency;
         nextArrivalMinutes = parseInt(nextArrivalMinutes);
-        var  nextArrivalpreformat= moment.duration(nextArrivalMinutes, 'minutes');
+        var nextArrivalpreformat= moment.duration(nextArrivalMinutes, 'minutes');
         var nextArrival = nextArrivalpreformat.format("hh:mm");
         var minutesAway = nextArrivalMinutes - currentMinute;
  
