@@ -81,7 +81,7 @@ database.ref().on("child_added", function (snapshot) {
 
     }
 
-    $("#train-table").append("<thead><tr><td scope='col'>" + trainName + "</td><td scope='col'>" + destination + "</td><td scope='col'>" + frequency + ' (' + firstTrain + ')' + "</td><td scope='col'>" + nextArrival + "</td><td scope='col'>" + minutesAway + "</td></tr></thead>")
+    $("#train-table").append("<thead><tr><td scope='col'>" + trainName + "</td><td scope='col'>" + destination + "</td><td class='text-center' scope='col'>" + frequency + "</td><td class='text-center' scope='col'>" + nextArrival + "</td><td class='text-center' scope='col'>" + minutesAway + "</td></tr></thead>")
 
     console.log ("nextArrivalMinutes: " + nextArrivalMinutes);
 
