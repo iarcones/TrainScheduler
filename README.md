@@ -8,7 +8,7 @@ Visit here: https://iarcones.github.io/TrainScheduler/
 # Built With
 HTML Bootstrap Javascript jQuery  Firebase momento.js
 
-#Authors
+# Authors
 Isabel Arcones
 
 # Comments
