@@ -12,10 +12,7 @@ firebase.initializeApp(config);
 
 
 var database = firebase.database();
-//   var connectionsRef = database.ref("/connections");
-//   var connectedRef = database.ref(".info/connected");
 
-// Whenever a user clicks the submit-bid button
 var currentTime = moment().format("MM/DD/YYYY - HH:mm");
 $("#current-time").text(currentTime);
 
@@ -28,9 +25,7 @@ $("#add-train-btn").on("click", function (event) {
     var destination = $("#destination-input").val().trim();
     var firstTrain = $("#first-train-input").val().trim();
     var frequency = $("#frequency-input").val().trim();
-    
-    console.log(trainName);
- 
+
     database.ref().push({
         trainName: trainName,
         destination: destination,
@@ -55,37 +50,36 @@ database.ref().on("child_added", function (snapshot) {
     var firstTrain = snapshot.val().firstTrain;
 
     console.log("trainName: " + trainName);
-    console.log(destination);
-    console.log(frequency);
-    console.log(firstTrain);
+    console.log("destination: " + destination);
+    console.log("frequency: " + frequency);
+    console.log("firstTrain: " + firstTrain);
+
     var firstTrainMinute = (parseInt((firstTrain.slice(0, 2))) * 60) + parseInt(firstTrain.slice(3, 5));
     var currentMinute = (parseInt(moment().format("HH")) * 60) + parseInt(moment().format("mm"));
 
     var elapsedTime = parseInt(currentMinute - firstTrainMinute);
-    console.log(currentMinute);
-    console.log(firstTrainMinute);
-    console.log(elapsedTime);
+    console.log("currentMinute: " + currentMinute);
+    console.log("firstTrainMinute: " + firstTrainMinute);
+    console.log("elapsedTime: " + elapsedTime);
 
-    if (elapsedTime < 0){
+    if (elapsedTime < 0) {
         var nextArrival = firstTrain;
         var minutesAway = trainMinute - currentMinute;
     }
     else {
         var nextArrivalMinutes = firstTrainMinute + ((Math.floor(elapsedTime / frequency)) * frequency) + frequency;
-        var nextArrivalHH = (Math.floor(nextArrivalMinutes/60)) 
-        var nextArrivalmm = nextArrivalMinutes - (nextArrivalHH*60);
-
-        var nextArrival = nextArrivalHH + ":" + nextArrivalmm;
-    
+        nextArrivalMinutes = parseInt(nextArrivalMinutes);
+        var  nextArrivalpreformat= moment.duration(nextArrivalMinutes, 'minutes');
+        var nextArrival = nextArrivalpreformat.format("hh:mm");
         var minutesAway = nextArrivalMinutes - currentMinute;
-
+ 
     }
 
     $("#train-table").append("<thead><tr><td scope='col'>" + trainName + "</td><td scope='col'>" + destination + "</td><td class='text-center' scope='col'>" + frequency + "</td><td class='text-center' scope='col'>" + nextArrival + "</td><td class='text-center' scope='col'>" + minutesAway + "</td></tr></thead>")
 
-    console.log ("nextArrivalMinutes: " + nextArrivalMinutes);
+    console.log("nextArrivalMinutes: " + nextArrivalMinutes);
 
-    console.log ("minutesAway: " + minutesAway);
+    console.log("minutesAway: " + minutesAway);
 
     console.log("-------------")
 
