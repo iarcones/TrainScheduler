@@ -5,8 +5,25 @@ td {
 }
 
 h1 {
+    font-size: 30px;
+    background-color: black;
+    color: white;
+    margin: 0;
+}
+
+h3 {
     font-size: 16px;
     background-color: black;
     color: white;
     margin: 0;
+    padding-bottom: 5px;
+}
+
+h2 {
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
