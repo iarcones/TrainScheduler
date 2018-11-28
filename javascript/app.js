@@ -55,10 +55,11 @@ database.ref().on("child_added", function (snapshot) {
     console.log("trainName: " + trainName);
     console.log("firstTrain: " + firstTrain);
 
-    var firstTrainMinute = (parseInt((firstTrain.slice(0, 2))) * 60) + parseInt(firstTrain.slice(3, 5));
+    // solution not used
+    // var firstTrainMinute = (parseInt((firstTrain.slice(0, 2))) * 60) + parseInt(firstTrain.slice(3, 5));
+   
+     var firstTrainMinute = (parseInt(moment(firstTrain, "hh:mm").format("HH")) * 60) + parseInt(moment(firstTrain, "hh:mm").format("mm"));
 
-    
-    // var currentMinute = (parseInt(moment().format("HH")) * 60) + parseInt(moment().format("mm"));
 
     var elapsedTime = parseInt(currentMinute - firstTrainMinute);
 
