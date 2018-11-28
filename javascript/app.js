@@ -53,26 +53,18 @@ database.ref().on("child_added", function (snapshot) {
     var firstTrain = snapshot.val().firstTrain;
 
     console.log("trainName: " + trainName);
-    console.log("destination: " + destination);
-    console.log("frequency: " + frequency);
     console.log("firstTrain: " + firstTrain);
 
     var firstTrainMinute = (parseInt((firstTrain.slice(0, 2))) * 60) + parseInt(firstTrain.slice(3, 5));
 
-    // var currentMinute = (currentTime.hour()*60) + currentTime.minute();
+    
     // var currentMinute = (parseInt(moment().format("HH")) * 60) + parseInt(moment().format("mm"));
 
     var elapsedTime = parseInt(currentMinute - firstTrainMinute);
-    console.log("currentMinute: " + currentMinute);
-    console.log("firstTrainMinute: " + firstTrainMinute);
-    console.log("elapsedTime: " + elapsedTime);
 
     if (elapsedTime < 0) {
-        console.log("negative");
         var nextArrival = firstTrain;
-        console.log("negative: nextArrival: " + nextArrival);
         var minutesAway = firstTrainMinute - currentMinute;
-        console.log("negative: minutesAway: " + minutesAway);
     }
     else {
         var nextArrivalMinutes = firstTrainMinute + ((Math.floor(elapsedTime / frequency)) * frequency) + frequency;
@@ -80,18 +72,9 @@ database.ref().on("child_added", function (snapshot) {
         var nextArrivalpreformat= moment.duration(nextArrivalMinutes, 'minutes');
         var nextArrival = nextArrivalpreformat.format("hh:mm");
         var minutesAway = nextArrivalMinutes - currentMinute;
- 
     }
 
     $("#train-table").append("<thead><tr><td scope='col'>" + trainName + "</td><td scope='col'>" + destination + "</td><td class='text-center' scope='col'>" + frequency + "</td><td class='text-center' scope='col'>" + nextArrival + "</td><td class='text-center' scope='col'>" + minutesAway + "</td></tr></thead>")
-
-    console.log("nextArrivalMinutes: " + nextArrivalMinutes);
-
-    console.log("minutesAway: " + minutesAway);
-
-    console.log("-------------")
-
-
 
 }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
