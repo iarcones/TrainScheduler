@@ -1,7 +1,8 @@
 # TrainScheduler
 
 Train scheduler, input data: train name, first train, frequency.
-Need calculate next arrival and minutes away from the current time.
+Calculate next arrival and minutes away from the current time.
+Added timer to update next arrival and minutes away every minute.
 
 Visit here: https://iarcones.github.io/TrainScheduler/
 

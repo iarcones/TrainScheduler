@@ -1,3 +1,4 @@
+
 #train-table th,
 td {
   display: inline-block;
@@ -30,4 +31,16 @@ h2 {
 
 th{
     font-weight: bold;
+}
+
+.btn {
+    background-color: black;
+    color: white;
+}
+
+#error-text {
+    color:red;
+    font-size: 16px;
+    font-weight: bold;
+
 }
