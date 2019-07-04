@@ -2,120 +2,127 @@
 
 <html lang="en-us">
 
-<head>
+    <head>
 
-    <meta charset="UTF-8">
+        <meta charset="UTF-8">
 
-    <title>Train Scheduler</title>
-   <!-- reset CSS -->
-   <link rel="stylesheet" href="./css/reset.css">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-   
-    <!-- My CSS -->
-    <link rel="stylesheet" href="./css/styles.css">
+        <title>Train Scheduler</title>
+        <!-- reset CSS -->
+        <link rel="stylesheet" href="./css/reset.css">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-</head>
+        <!-- My CSS -->
+        <link rel="stylesheet" href="./css/styles.css">
 
-<body>
+    </head>
 
-    <!-- Train Scheduler -->
-    <div class="container">
+    <body>
 
-        <!-- Jumbotron -->
-        <div class="jumbotron" style="background-color: black; color: white; padding-bottom: 1px; padding-top: 1px">
-            <h1 class="text-center">Train Scheduler</h1>
-            <h3 class="text-center">All you need to know to catch the next one</h3>
-            <h3 class="text-center" id="current-time"></h3>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <!-- Current Trains-->
-                <div class="card mb-4">
-                    <h2 class="titles">Current Train Schedule</h2>
-                    <div class="card-body">
-                        <table class="table table-sm table-hover" id='train-table'>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Train Name</th>
-                                    <th scope="col">Destination</th>
-                                    <th class="text-center" scope="col">Frequency(min)</th>
-                                    <th class="text-center" scope="col">Next Arrival</th>
-                                    <th class="text-center" scope="col">Minutes Away</th>
-                                </tr>
-                            </thead>
-                        </table>
+        <!-- Train Scheduler -->
+        <div class="container">
+
+            <!-- Jumbotron -->
+            <div class="jumbotron" style="background-color: black; color: white; padding-bottom: 1px; padding-top: 1px">
+                <h1 class="text-center">Train Scheduler</h1>
+                <h3 class="text-center">All you need to know to catch the next one</h3>
+                <h3 class="text-center" id="current-time"></h3>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <!-- Current Trains-->
+                    <div class="card mb-4">
+                        <h2 class="titles">Current Train Schedule</h2>
+                        <div class="card-body">
+                            <table class="table table table-hover" id='train-table'>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Train Name</th>
+                                        <th scope="col">Destination</th>
+                                        <th class="text-center" scope="col">Frequency(min)</th>
+                                        <th class="text-center" scope="col">Next Arrival</th>
+                                        <th class="text-center" scope="col">Minutes Away</th>
+                                        <th class="text-center" scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--  adding trains with jquery -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <!-- Add Train  -->
-                <div class="card mb-4">
-                    <h2 class="titles">Add Train</h2>
-                    <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Add Train  -->
+                    <div class="card mb-4">
+                        <h2 class="titles">Add Train</h2>
+                        <div class="card-body">
 
-                        <!-- Entry Form -->
-                        <form>
-                            <div class="form-group row">
-                                <label for="train-name-input">Train Name</label>
-                                <input class="form-control" id="train-name-input" placeholder="" type="text">
-                            </div>
-                            <div class="form-group row">
-                                <label for="destination-input">Destination</label>
-                                <input class="form-control" id="destination-input" placeholder="" type="text">
-                            </div>
-                            <div class="form-group row">
-                                <label for="first-train-input">First Train Time (HH:mm - military time)</label>
-                                <input class="form-control" id="first-train-input" placeholder="" type="text">
-                            </div>
-                            <div class="form-group row">
-                                <label for="frequency-input">Frequency (min)</label>
-                                <input class="form-control" id="frequency-input" placeholder="" type="text">
-                            </div>
-                            <div><p id=error-text></p></div>
-                            <button class="btn btn-primary float-left" id="add-train-btn">Submit</button>
-                        </form>
-                        <div><p id=error-text></p></div>
+                            <!-- Entry Form -->
+                            <form>
+                                <div class="form-group row">
+                                    <label for="train-name-input">Train Name</label>
+                                    <input class="form-control" id="train-name-input" placeholder="" type="text">
+                                </div>
+                                <div class="form-group row">
+                                    <label for="destination-input">Destination</label>
+                                    <input class="form-control" id="destination-input" placeholder="" type="text">
+                                </div>
+                                <div class="form-group row">
+                                    <label for="first-train-input">First Train Time (HH:mm - military time)</label>
+                                    <input class="form-control" id="first-train-input" placeholder="" type="text">
+                                </div>
+                                <div class="form-group row">
+                                    <label for="frequency-input">Frequency (min)</label>
+                                    <input class="form-control" id="frequency-input" placeholder="" type="text">
+                                </div>
+                                <button class="btn btn-primary float-left" id="add-train-btn">Submit</button>
+                                <p id=error-text></p>
+                            </form>
+                           
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
+        <!-- Optional JavaScript -->
+        <!-- Firebase Reference -->
 
-    <!-- Optional JavaScript -->
-    <!-- Firebase Reference -->
+        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+        <!-- Moment.js Reference -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 
-    <!-- Moment.js Reference -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <!-- moment-duration-format plugin -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js"></script>
 
-    <!-- moment-duration-format plugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js"></script>
-    
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-    <!-- jQuery CDN  -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
+        <!-- jQuery CDN  -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- My Javascript -->
-    <script src="./javascript/app.js"></script>
-    
+        <!-- My Javascript -->
+        <script src="./javascript/app.js"></script>
 
 
-</body>
+
+    </body>
 
 </html>
