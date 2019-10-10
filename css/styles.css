@@ -50,3 +50,7 @@ h2 {
   margin-left: 25px;
   border: 0;
 }
+#current-time{
+  font-size: 25px;
+  color: greenyellow
+}
