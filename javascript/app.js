@@ -20,7 +20,7 @@ $("#current-time").text(currentTime);
 var update = setInterval(updateInfo, 60000);
 
 $("#add-train-btn").on("click", function(event) {
-  // Prevent form from submitting
+  // Prevent form from submittingdb.
   event.preventDefault();
 
   $("#error-text").text("");
@@ -156,7 +156,7 @@ function calculateNext(firstTrain, frequency){
     var firstTrain = moment(firstTrain, "HH:mm:ss");
 
     var minutesAway =
-      frequency - (moment().diff(firstTrain, "minutes") % frequency);
+      frequency - ((moment().diff(firstTrain, "minutes") % frequency));
 
     if (moment() < moment(firstTrain)) {
       miliseconds = moment(firstTrain).diff(moment());
